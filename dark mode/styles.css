@@ -1,0 +1,190 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #222;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  background-color: #333;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+#map {
+  width: 70%;
+  height: 600px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #333;
+}
+
+#info {
+  width: 28%;
+  background-color: #444;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+#route-details {
+margin-top: 20px;
+}
+
+h2 {
+font-size: 1.5rem;
+margin-bottom: 10px;
+}
+
+p {
+font-size: 1.2rem;
+margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+main {
+flex-direction: column;
+align-items: center;
+}
+
+#map {
+width: 100%;
+height: 400px;
+margin-bottom: 20px;
+}
+
+#info {
+width: 100%;
+padding: 10px;
+}
+
+h1 {
+font-size: 2rem;
+}
+
+h2 {
+font-size: 1.2rem;
+}
+
+input, button {
+font-size: 1rem;
+}
+}
+
+@media (max-width: 480px) {
+h1 {
+font-size: 1.5rem;
+}
+
+h2 {
+font-size: 1rem;
+}
+
+input, button {
+font-size: 0.8rem;
+}
+}
+
+#dark-mode-toggle {
+display: none;
+}
+
+#dark-mode-label {
+position: fixed;
+top: 10px;
+right: 10px;
+padding: 10px;
+background-color: #333;
+color: #fff;
+font-size: 1.2rem;
+cursor: pointer;
+}
+
+#dark-mode-toggle:checked ~ body {
+background-color: #fff;
+color: #222;
+}
+
+#dark-mode-toggle:checked ~ header {
+background-color: #eee;
+}
+
+#dark-mode-toggle:checked ~ #info {
+background-color: #ddd;
+}
+
+.gm-style-mtc {
+background-color: #333;
+border-radius: 5px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gm-style-mtc label {
+color: #fff;
+}
+
+.gm-style-mtc input {
+background-color: #444;
+color: #fff;
+border: none;
+border-radius: 5px;
+}
+
+.gm-style-mtc button {
+background-color: #333;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.gm-style-mtc button:hover {
+background-color: #555;
+}

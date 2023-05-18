@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3LHd0aUM90OGkBfPwR5MvnXk_AHhRODE"></script> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3LHd0aUM90OGkBfPwR5MvnXk_AHhRODE&libraries=places" ></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@6.6.1/dist/ol.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ol@6.6.1/dist/ol.js"></script>
+  <script src="https://www.google.com/jsapi"></script>
+
+
+  <title>Durian Export Routes</title>
+
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <div class="test">
+      <button class="test"></button>
+      <div class="test-content2">
+        <a href="export.html">มูลค่าการส่งออก</a>
+        <a href="ep2.html">จำนวนการส่งออกและมูลค่าในแต่ละปี</a>
+        <a href="price.html">ราคาทุเรียนวันนี้</a>
+        <a href="https://www.talaadthai.com/">ไปสู่เว็บตลาดไท</a>
+      </div>
+    </div>
+    
+    <div class="dropdown">
+      <button class="dropbtn"></button>
+      <div class="dropdown-content">
+        <a onclick="toggleCategoryLayer(0, !isCategoryVisible(0))">Police Stations</a>
+        <a onclick="toggleCategoryLayer(1, !isCategoryVisible(1))">Hotels</a>
+        <a onclick="toggleCategoryLayer(2, !isCategoryVisible(2))">Resorts</a>
+        <a onclick="toggleCategoryLayer(3, !isCategoryVisible(3))">Gas Stations</a>
+        <!-- <a href="#" onclick="toggleCategoryLayer(4, !isCategoryVisible(4))">ATMs</a> -->
+      </div>
+    </div>
+
+  <section id="info">
+    <form id="destination-form">
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" name="origin" placeholder="Enter starting point" required>
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" name="destination" placeholder="Enter destination point" required>
+      <label for="weight">Weight of Durian:</label>
+      <input type="number" id="weight" name="weight" step="0.01" placeholder="Enter weight" required>
+      <label for="weight-unit">Weight Unit:</label>
+
+      
+      <button type="submit" id="find-route-btn">Find Route</button>
+      
+    </form>
+    <div id="route-details">
+      <h2>Route Details</h2>
+      <p id="duration">Delivery time: N/A</p>
+      <p id="distance">Route distance: N/A</p>
+      <p id="export-price">Export price: N/A</p>
+      <button id="toggleButton" class="orchard-btn">Show / Hide Durian Orchards</button>
+      <button id="durian-orchards-btn" class="orchard-btn">Place To Travel & Eat</button>
+      <div id="durian-orchards"></div>
+    </div>
+  </section>
+
+  <script src="app.js" defer></script>
+
+</body>
+</html>

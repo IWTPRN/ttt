@@ -1,0 +1,12 @@
+h1, h2, h5 {
+	font-weight: bold;
+}
+
+.logo {
+	width: 100px;
+	height: 100px;
+	background: url('logo.png') center center no-repeat;
+	background-size: cover;
+	margin-bottom: 30px;
+}
+

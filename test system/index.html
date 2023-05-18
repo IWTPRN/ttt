@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ใบเสนอราคา</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="logo.png" alt="logo" class="logo">
+        </div>
+        <div class="col-md-6">
+          <h1 class="company-name">บริษัท ABC</h1>
+          <p class="company-address">123 ถนน XYZ แขวง ABC เขต XYZ กรุงเทพมหานคร 12345</p>
+          <p class="company-tel">โทรศัพท์: 02-123-4567</p>
+          <p class="company-email">อีเมล: abc@example.com</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="title">ใบเสนอราคา</h2>
+        </div>
+        <div class="col-md-6">
+          <p class="quote-number">เลขที่ใบเสนอราคา: <span id="quote-number"></span></p>
+          <p class="quote-date">วันที่: <span id="quote-date"></span></p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="customer-info-title">ข้อมูลลูกค้า</h3>
+          <div class="form-group">
+            <label for="customer-name">ชื่อลูกค้า:</label>
+            <input type="text" class="form-control" id="customer-name">
+          </div>
+          <div class="form-group">
+            <label for="customer-address">ที่อยู่ลูกค้า:</label>
+            <textarea class="form-control" id="customer-address" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3 class="quote-summary-title">สรุปรายการเสนอราคา</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>รายการสินค้า</th>
+                <th>จำนวน</th>
+                <th>ราคา/หน่วย</th>
+                <th>รวม</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>สินค้า A</td>
+                <input type="number" class="form-control" id="product-a-quantity" value="0">
+              </td>
+              <td>100</td>
+              <td><span id="product-a-total">0</span></td>
+            </tr>
+            <tr>
+              <td>สินค้า B</td>
+              <td>
+                <input type="number" class="form-control" id="product-b-quantity" value="0">
+              </td>
+              <td>200</td>
+              <td><span id="product-b-total">0</span></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-right">ราคารวม</td>
+              <td><span id="sub-total">0</span></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-right">ภาษีมูลค่าเพิ่ม (7%)</td>
+              <td><span id="vat">0</span></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-right">ราคารวมทั้งสิ้น</td>
+              <td><span id="total">0</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="company-signature-title">ลายเซ็นบริษัท</h3>
+        <img src="company-signature.png" alt="company signature" class="company-signature">
+      </div>
+      <div class="col-md-6">
+        <h3 class="customer-signature-title">ลายเซ็นลูกค้า</h3>
+        <img src="customer-signature.png" alt="customer signature" class="customer-signature">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button class="btn btn-primary" onclick="exportToPdf()">Export เป็น PDF</button>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" integrity="sha512-rM/Aa05pDd9g/+Ct8oV7cHs1w+e2bchZCGJ8v2n0nETKoX7zuxyJpfr+s7G/ZmeBnMPVxLlB1RGZtF0YtJjA7A==" crossorigin="anonymous"></script>
+<script>
+  // ฟังก์ชันสำหรับคำนวณราคาสินค้าและสรุปรายการเสนอราคา
+  function calculateQuote() {
+    // อ่านค่าจำนวนสินคารที่กรอกเข้ามา
+let productAQuantity = parseInt($('#product-a-quantity').val());
+let productBQuantity = parseInt($('#product-b-quantity').val());
+  // คำนวณราคารวมและภาษีมูลค่าเพิ่ม
+  let subTotal = productAQuantity * 100 + productBQuantity * 200;
+  let vat = subTotal * 0.07;
+  let total = subTotal + vat;
+
+  // แสดงผลราคารวมและภาษีมูลค่าเพิ่ม
+  $('#sub-total').text(subTotal.toLocaleString('th-TH'));
+  $('#vat').text(vat.toLocaleString('th-TH'));
+  $('#total').text(total.toLocaleString('th-TH'));
+
+  // คำนวณราคารวมของสินค้า A และ B
+  let productATotal = productAQuantity * 100;
+  let productBTotal = productBQuantity * 200;
+
+  // แสดงผลราคารวมของสินค้า A และ B
+  $('#product-a-total').text(productATotal.toLocaleString('th-TH'));
+  $('#product-b-total').text(productBTotal.toLocaleString('th-TH'));
+}
+
+// เมื่อมีการเปลี่ยนแปลงในจำนวนสินค้าให้คำนวณราคาสินค้าและสรุปรายการเสนอราคาใหม่
+$('#product-a-quantity, #product-b-quantity').on('change', function() {
+  calculateQuote();
+});
+
+// ฟังก์ชันสำหรับสร้างไฟล์ PDF จาก HTML
+function exportToPdf() {
+  // สร้างตัวแปรสำหรับเก็บข้อมูลใน HTML
+  let htmlData = document.documentElement.innerHTML;
+
+  // สร้างตัวแปรสำหรับเก็บข้อมูลใน PDF
+  let pdfData = new Blob([htmlData], {type: 'application/pdf'});
+
+  // สร้างตัวแปรสำหรับดาวน์โหลดไฟล์ PDF
+  let downloadLink = document.createElement('a');
+  downloadLink.href = window.URL.createObjectURL(pdfData);
+  downloadLink.download = 'quotation.pdf';
+  downloadLink.click();
+}
+
+// ตั้งค่าเลขที่ใบเสนอราคาและวันที่ให้ถูกต้อง
+let today = new Date();
+let quoteNumber = Math.floor(Math.random() * 100000);
+$('#quote-number').text(quoteNumber);
+$('#quote-date').text(today.toLocaleDateString('th-TH', {year: 'numeric', month: 'long', day: 'numeric'}));
+
+// เมื่อมีการเปลี่ยนแปลงในข้อมูลลูกค้าให้คำนวณราคาสินค้าและสรุปรายการเสนอร์เดิน่าโดยใช้ข้อมูลจากฐานข้อมูล
+$('#customer-info').on('change', function() {
+let customerName = $('#customer-name').val();
+let customerAddress = $('#customer-address').val();
+  // แสดงชื่อลูกค้าและที่อยู่ลูกค้าใหม่
+  $('.customer-info').text('ชื่อลูกค้า: ' + customerName);
+  $('.customer-info').append('<br>ที่อยู่ลูกค้า: ' + customerAddress);
+
+  // คำนวณราคาสินค้าและสรุปรายการเสนอราคาใหม่
+  calculateQuote();
+});
+
+// คำนวณราคาสินค้าและสรุปรายการเสนอราคาเมื่อโหลดหน้าเว็บ
+calculateQuote();
+</script>
+</body>
+</html>

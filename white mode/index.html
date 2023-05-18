@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durian Export Routes</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuiEckMQdLY7MEMr2hyxmxzvND43lgITk"></script>
+</head>
+<body>
+  <header>
+    <h1>Durian Export Routes </h1>
+  </header>
+  <main>
+    <section id="map"></section>
+    <section id="info">
+      <form id="destination-form">
+        <label for="destination">Destination :</label>
+        <input type="text" id="destination" name="destination" placeholder="Enter destination city" required>
+        <button type="submit">Find Route</button>
+      </form>
+      <div id="route-details">
+        <h2>Route Details</h2>
+        <p id="duration">Delivery time: N/A</p>
+        <p id="distance">Route distance: N/A</p>
+        <p id="export-price">Export price: N/A</p>
+      </div>
+    </section>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>

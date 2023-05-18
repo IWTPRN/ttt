@@ -1,0 +1,389 @@
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: #222;
+  color: #fff;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  background-color: #202124;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+h1 {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 5px;
+  height: calc(100% - 80px); /* Adjust height to exclude the header */
+  margin-top: 80px; /* Add margin to create space for the fixed header */
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%; /* Adjust width to leave more space for the menu panel */
+  height: 100%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #333;
+}
+
+#info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%; /* Reduce width by 20% */
+  height: 100%;
+  background-color: #444;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  overflow-y: visible; /* Set scrolling to visible instead of auto */
+  box-sizing: border-box; /* Make sure the padding is included in the total width and height */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+}
+
+button {
+  padding: 10px;
+  background-color: #4285f4;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #3661c3;
+}
+
+button:focus {
+  outline: none;
+}
+
+#find-route-btn {
+  background-color: #0f9d58;
+  margin-top: 10px;
+}
+
+#find-route-btn:hover {
+background-color: #128a50;
+}
+
+#toggleButton {
+background-color: #f4b400;
+margin-top: 10px;
+}
+
+#toggleButton:hover {
+background-color: #fdd72a;
+}
+
+#durian-orchards-btn {
+background-color: #db4437;
+margin-top: 10px;
+}
+
+.orchard-btn {
+width: 100%; /* Set the width to 100% so both buttons have the same width */
+}
+
+#durian-orchards-btn:hover {
+background-color: #c4241c;
+}
+
+#durian-orchards-btn:focus {
+outline: none;
+}
+
+#route-details {
+margin-top: 20px;
+}
+
+h2 {
+font-size: 1.1rem;
+margin-bottom: 10px;
+}
+
+p {
+font-size: 1.0rem;
+margin-bottom: 0px;
+}
+
+.gm-style-mtc {
+background-color: #fff;
+border-radius: 5px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gm-style-mtc label {
+color: #555;
+}
+
+.gm-style-mtc input {
+background-color: #f5f5f5;
+color: #222;
+border: none;
+border-radius: 5px;
+}
+
+.gm-style-mtc button {
+background-color: #4285f4;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease-in-out;
+}
+
+.gm-style-mtc button:hover {
+background-color: #3661c3;
+}
+
+.gm-style-mtc button:focus {
+outline: none;
+}
+
+#durian-orchards {
+margin-top: 10px;
+max-height: 300px;
+overflow-y: scroll;
+}
+
+.orchard {
+display: flex;
+flex-direction: column;
+margin-bottom: 10px;
+}
+
+.orchard-name {
+font-size: 1.2rem;
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.orchard-address {
+font-size: 1rem;
+margin-bottom: 5px;
+}
+
+.orchard-distance {
+font-size: 1rem;
+font-style: italic;
+}
+
+#map-container.hidden .marker {
+display: none;
+}
+
+/* Additional styles for weight input and dropdown */
+#weight-container {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+#weight-label {
+font-size: 1.2rem;
+margin-right: 5px;
+}
+
+#weight-input {
+width: 50%;
+margin-right: 5px;
+}
+
+#weight-unit {
+width: 40%;
+}
+
+#navbar {
+position: absolute;
+top: 0;
+right: 350px;
+z-index: 1000;
+display: flex;
+justify-content: space-between;
+}
+
+#navbar-toggle {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 60px;
+width: 50px;
+background-color: #202124;
+}
+
+#navbar-toggle span {
+display: block;
+width: 100%;
+height: 2px;
+background-color: #fff;
+border-radius: 2px;
+margin: 2px 0;
+}
+
+#nav-menu {
+position: absolute;
+top: 60px;
+right: 0;
+width: 200px;
+background-color: #202124;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+display: none;
+list-style: none;
+padding: 0;
+margin: 0;
+border-radius: 5px;
+z-index: 999;
+}
+
+#navbar:hover #nav-menu {
+display: block;
+}
+
+#nav-menu li:first-child {
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#nav-menu li a {
+text-decoration: none;
+color: #fff;
+font-size: 1.2rem;
+display: block;
+padding: 8px 16px;
+transition: background-color 0.3s ease-in-out;
+}
+
+#nav-menu li:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown,
+.test {
+  position: relative;
+  display: inline-block;
+  padding: 16px;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.dropdown-content,
+.test-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content,
+.test:hover .test-content2 {
+  display: block;
+}
+
+.dropdown-content a,
+.test-content2 a {
+  display: block;
+  padding: 8px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover,
+.test-content2 a:hover {
+  background-color: #ddd;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+  /* Add styles for responsive design */
+  @media screen and (max-width: 768px) {
+    header {
+    padding: 0 20px;
+    }
+    
+    main {
+    flex-direction: column;
+    height: auto;
+    margin-top: 0;
+    }
+    
+    #map {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 20px;
+    }
+    
+    #info {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    }
+    
+    .dropdown {
+    top: 0px;
+    right: 0px;
+    }
+    }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px; /* Increase the width from 800px to 960px (800*1.2) */
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: animateBackground 30s linear infinite;
+        }
+
+        @keyframes animateBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        a {
+            color: #008080;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-animation" style="background-image: url(https://cdn.discordapp.com/attachments/1107927329042342028/1108364763643248690/2540__page-0001.jpg);"></div>
+        <a href="index.html">กลับหน้าหลัก</a>
+        <img src="https://cdn.discordapp.com/attachments/1107927329042342028/1108364763643248690/2540__page-0001.jpg" alt="คำอธิบายภาพ">
+    </div>
+</body>
+</html>
